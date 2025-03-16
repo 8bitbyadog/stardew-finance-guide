@@ -1,5 +1,5 @@
-/// <reference types="vitest" />
 import { defineConfig } from 'vite'
+import type { UserConfig as VitestUserConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
@@ -18,5 +18,5 @@ export default defineConfig({
     typecheck: {
       tsconfig: './tsconfig.json',
     },
-  },
+  } satisfies VitestUserConfig['test'],
 }) 
