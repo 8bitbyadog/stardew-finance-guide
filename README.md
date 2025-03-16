@@ -1,5 +1,7 @@
 # Stardew Valley Finance Guide 🌱
 
+[![CI/CD](https://github.com/8bitbyadog/stardew-finance-guide/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/8bitbyadog/stardew-finance-guide/actions/workflows/ci-cd.yml)
+
 A comprehensive web application to help Stardew Valley players optimize their farming journey and financial decisions. Built with React, TypeScript, and Tailwind CSS.
 
 ## Features
