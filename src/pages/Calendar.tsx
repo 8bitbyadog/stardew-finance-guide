@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TaskCard from '../components/TaskCard';
 import { getSeasonTasks } from '../data/calendar';
 import type { DailyTask } from '../data/calendar';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 const seasons = ['Spring', 'Summer', 'Fall', 'Winter'];
 const daysInSeason = 28;
@@ -10,13 +11,19 @@ export default function Calendar() {
   const [selectedSeason, setSelectedSeason] = useState('Spring');
   const [selectedDay, setSelectedDay] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const seasonData = getSeasonTasks(selectedSeason);
   const dayData = seasonData?.days.find(d => d.day === selectedDay);
 
-  const filteredTasks = dayData?.tasks.filter(task => 
-    !selectedCategory || task.category === selectedCategory
-  ) ?? [];
+  const filteredTasks = dayData?.tasks.filter(task => {
+    const matchesCategory = !selectedCategory || task.category === selectedCategory;
+    const matchesSearch = searchQuery === '' || 
+      task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      task.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      task.location?.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  }) ?? [];
 
   const categories = Array.from(
     new Set(dayData?.tasks.map(task => task.category) ?? [])
@@ -26,6 +33,20 @@ export default function Calendar() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Stardew Valley Calendar</h1>
       
+      {/* Search Bar */}
+      <div className="mb-6">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search tasks..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+        </div>
+      </div>
+
       {/* Season Selection */}
       <div className="flex space-x-4 mb-6">
         {seasons.map(season => (
@@ -61,7 +82,7 @@ export default function Calendar() {
       </div>
 
       {/* Category Filter */}
-      <div className="flex space-x-4 mb-6">
+      <div className="flex flex-wrap gap-4 mb-6">
         <button
           onClick={() => setSelectedCategory(null)}
           className={`px-4 py-2 rounded-lg ${
@@ -95,7 +116,7 @@ export default function Calendar() {
           ))
         ) : (
           <p className="text-gray-500 text-center py-8">
-            No tasks scheduled for this day.
+            No tasks found for the current filters.
           </p>
         )}
       </div>

@@ -57,6 +57,17 @@ export const springCalendar: SeasonCalendar = {
           location: 'Cindersap Forest',
           estimatedProfit: 100,
           requiredEnergy: 20
+        },
+        {
+          id: 'spring-1-3',
+          title: 'Meet the Townspeople',
+          description: 'Introduce yourself to villagers in Pelican Town',
+          priority: 'High',
+          category: 'Social',
+          timeOfDay: 'Any',
+          weather: 'Any',
+          location: 'Pelican Town',
+          requiredEnergy: 10
         }
       ],
       specialEvents: [
@@ -81,10 +92,103 @@ export const springCalendar: SeasonCalendar = {
           estimatedProfit: 500,
           requiredTools: ['Bamboo Pole'],
           requiredEnergy: 40
+        },
+        {
+          id: 'spring-2-2',
+          title: 'Water Crops',
+          description: 'Water your newly planted parsnips',
+          priority: 'High',
+          category: 'Farming',
+          timeOfDay: 'Morning',
+          weather: 'Sunny',
+          location: 'Farm',
+          requiredTools: ['Watering Can'],
+          requiredEnergy: 15
+        }
+      ]
+    },
+    {
+      day: 13,
+      tasks: [
+        {
+          id: 'spring-13-1',
+          title: 'Egg Festival Preparation',
+          description: 'Prepare for tomorrow\'s Egg Festival',
+          priority: 'Medium',
+          category: 'Other',
+          timeOfDay: 'Any',
+          weather: 'Any',
+          location: 'Pelican Town',
+          requiredEnergy: 10
+        }
+      ],
+      specialEvents: [
+        {
+          title: 'Egg Festival Eve',
+          description: 'Get ready for tomorrow\'s egg hunt!'
+        }
+      ]
+    },
+    {
+      day: 14,
+      tasks: [
+        {
+          id: 'spring-14-1',
+          title: 'Attend Egg Festival',
+          description: 'Participate in the egg hunt and shop at festival stands',
+          priority: 'High',
+          category: 'Social',
+          timeOfDay: 'Morning',
+          weather: 'Any',
+          location: 'Town Square',
+          requiredEnergy: 20
+        }
+      ],
+      specialEvents: [
+        {
+          title: 'Egg Festival',
+          description: 'Annual spring celebration featuring an egg hunt competition'
+        }
+      ]
+    },
+    {
+      day: 24,
+      tasks: [
+        {
+          id: 'spring-24-1',
+          title: 'Flower Dance Preparation',
+          description: 'Get ready for tomorrow\'s Flower Dance',
+          priority: 'Medium',
+          category: 'Social',
+          timeOfDay: 'Any',
+          weather: 'Any',
+          location: 'Farm',
+          requiredEnergy: 10
+        }
+      ]
+    },
+    {
+      day: 25,
+      tasks: [
+        {
+          id: 'spring-24-1',
+          title: 'Attend Flower Dance',
+          description: 'Join the spring dance festival and try to find a dance partner',
+          priority: 'High',
+          category: 'Social',
+          timeOfDay: 'Morning',
+          weather: 'Any',
+          location: 'Cindersap Forest',
+          requiredEnergy: 20
+        }
+      ],
+      specialEvents: [
+        {
+          title: 'Flower Dance',
+          description: 'Annual spring dance celebration in the Cindersap Forest'
         }
       ]
     }
-    // Add more days as needed
   ]
 };
 
